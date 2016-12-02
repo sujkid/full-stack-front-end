@@ -7,6 +7,7 @@ const getFormFields = require(`../../../../lib/get-form-fields`);
 const onUpdateItems = function(event) {
   event.preventDefault();
   debugger;
+  let edit = $(event.target).data('id');
   let data = getFormFields(this);
   console.log(data);
   api.updateItem(data)
