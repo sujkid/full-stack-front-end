@@ -24,7 +24,18 @@ const deleteItems = (data) =>
   }
 );
 
+const updateItem = (data) =>
+$.ajax({
+    url: config.host + '/edit-user-item/' + data.edit.id,
+    method: 'PATCH',
+    data,
+    headers: {
+      Authorization: 'Token token=' + store.user.token,
+    },
+  });
+
 module.exports = {
   viewItems,
   deleteItems,
+  updateItem,
 };

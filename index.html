@@ -10,8 +10,8 @@
     <script src="bundle.js" type="text/javascript" charset="utf-8" defer>
     </script>
 
-    <script src="vendor.bundle.js" type="text/javascript" charset="utf-8"
-            defer></script>
+    <!-- <script src="vendor.bundle.js" type="text/javascript" charset="utf-8"
+            defer></script> -->
     <script src="bundle.js" type="text/javascript" charset="utf-8" defer>
     </script>
   </head>
@@ -193,7 +193,7 @@
 	  		<ul class="side-items">
 		    	<li><a href="#">Requests</a></li>
     			<li><a href="#" class="addb">Add Books</a></li>
-    			<li><a href="#" class="delb">View/Delete Books</a></li>
+    			<li><a href="#" class="delb">Edit Books</a></li>
     			<li><a href="#" class="searchb">Search</a></li>
   			</ul>
     	</div>
@@ -223,6 +223,7 @@
               <tr>
                 <th>Name</th>
                 <th>Description</th>
+                <th></th>
                 <th></th>
               </tr>
             </table>
@@ -255,6 +256,7 @@
       </div>
     </div>
 
+    <!--Request modal-->
     <div class="modal fade" id="request-item-modal" tabindex="-1" role="dialog"
          aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
@@ -268,16 +270,13 @@
           <div class="modal-body">
             <form class="request-item-form">
               <div class="form-group">
-                <input type="text" name="request[user_item_id]" id="request-id">
-              </div>
-              <!-- <div class="form-group">
-                <input type="text" name="request[user_id1]"
+                <input type="text" name="request[user_item_id]"
                        id="requested-user-id1">
-              </div> -->
-              <!-- <div class="form-group">
-                <input type="text" name="request[user_id2]"
+              </div>
+              <div class="form-group">
+                <input type="text" name="request[lent_user_item_id]"
                        id="requested-user-id2">
-              </div> -->
+              </div>
               <div class="form-group">
                 <label>Location</label>
                 <input type="text" name="request[location]">
@@ -288,6 +287,39 @@
               </div>
 
               <button type="submit" class="btn btn-default">Request</button>
+              <button type="button" class="btn btn-default">Cancel</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit modal-->
+    <div class="modal fade" id="edit-item-modal" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"
+                    aria-label="Close"><span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">Edit/Delete</h4>
+          </div>
+          <div class="modal-body">
+            <form class="edit-item-form">
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" name="edit[name]">
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <input type="text" name="edit[description]">
+              </div>
+              <div class="form-group">
+                <input type="text" id="edit_id" name="edit[id]">
+              </div>
+
+              <button type="submit" class="btn btn-default">Update</button>
               <button type="button" class="btn btn-default">Cancel</button>
             </form>
           </div>
