@@ -10,6 +10,7 @@ const addItems = require('./inbox/additems/additems');
 const delItems = require('./inbox/deleteitems/deleteitems');
 const searchItems = require('./inbox/searchitems/searchitems');
 const requestItems = require('./inbox/requestitems/requestitems');
+const requests = require('./inbox/requests/requests');
 // const deleteItems = require('./inbox/deleteitems/deleteitems');
 
 $(() => {
@@ -18,6 +19,7 @@ $(() => {
   delItems.addHandlers();
   searchItems.addHandlers();
   requestItems.addHandlers();
+  requests.addHandlers();
   // deleteItems.addHandlers();
   $('#change-pw').hide();
   $('#sign-out').hide();
@@ -26,4 +28,5 @@ $(() => {
   $('.delete-books-div').hide();
   $('.search-books-div').hide();
   $('.search-form').hide();
+  $('.requests-div').hide();
 });

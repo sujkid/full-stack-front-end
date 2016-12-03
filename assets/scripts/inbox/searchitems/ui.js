@@ -3,11 +3,11 @@
 const api = require('./api');
 // const requestItems = require('./../requestitems/requestitems');
 
-const delete_table = function() {
+const deleteTable = function() {
   // debugger;
   let table = document.getElementById('search-table');
   let rowCount = table.rows.length;
-  for (let i=1; i < rowCount; i++) {
+  for (let i = 1; i < rowCount; i++) {
     table.deleteRow(1);
   }
 };
@@ -35,7 +35,7 @@ const failure = function() {
 // };
 
 const onSearchItemSuccess = function(data) {
-  delete_table();
+  deleteTable();
   console.log(data);
   debugger;
   if (data) {

@@ -25,7 +25,7 @@ const deleteItems = (data) =>
 );
 
 const updateItem = (data) =>
-$.ajax({
+  $.ajax({
     url: config.host + '/edit-user-item/' + data.edit.id,
     method: 'PATCH',
     data,
