@@ -34,8 +34,9 @@ webpackJsonp([0],[
 	var authEvents = __webpack_require__(4);
 	var addItems = __webpack_require__(10);
 	var delItems = __webpack_require__(13);
-	var searchItems = __webpack_require__(17);
-	var requestItems = __webpack_require__(20);
+	var searchItems = __webpack_require__(16);
+	var requestItems = __webpack_require__(19);
+	var requests = __webpack_require__(22);
 	// const deleteItems = require('./inbox/deleteitems/deleteitems');
 
 	$(function () {
@@ -44,6 +45,7 @@ webpackJsonp([0],[
 	  delItems.addHandlers();
 	  searchItems.addHandlers();
 	  requestItems.addHandlers();
+	  requests.addHandlers();
 	  // deleteItems.addHandlers();
 	  $('#change-pw').hide();
 	  $('#sign-out').hide();
@@ -52,6 +54,7 @@ webpackJsonp([0],[
 	  $('.delete-books-div').hide();
 	  $('.search-books-div').hide();
 	  $('.search-form').hide();
+	  $('.requests-div').hide();
 	});
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
@@ -315,6 +318,7 @@ webpackJsonp([0],[
 	  $('.delete-books-div').hide();
 	  $('.search-books-div').hide();
 	  $('.search-form').hide();
+	  $('.requests-div').hide();
 	};
 
 	var onAddItem = function onAddItem(event) {
@@ -390,6 +394,7 @@ webpackJsonp([0],[
 	var ui = __webpack_require__(15);
 
 	var onViewItemLink = function onViewItemLink(event) {
+	  debugger;
 	  event.preventDefault();
 	  $('.add-books-div').hide();
 	  $('.search-books-div').hide();
@@ -462,13 +467,13 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 
 	var api = __webpack_require__(14);
-	var update = __webpack_require__(16);
+	var getFormFields = __webpack_require__(5);
 
 	var failure = function failure() {
-	  console.log('fail');
+	  console.log('fixxit');
 	};
 
-	var delete_table = function delete_table() {
+	var deleteTable = function deleteTable() {
 	  // debugger;
 	  var table = document.getElementById("del-table");
 	  var rowCount = table.rows.length;
@@ -478,7 +483,7 @@ webpackJsonp([0],[
 	};
 
 	var onViewItemsSuccess = function onViewItemsSuccess(data) {
-	  delete_table();
+	  deleteTable();
 	  //debugger;
 	  console.log(data);
 	  if (data) {
@@ -489,10 +494,7 @@ webpackJsonp([0],[
 	      for (var i = 0; i < len; i++) {
 	        if (data.user_items[i].name && data.user_items[i].description) {
 	          // txt += "<tr><td>"+data.user_items[i].name+"</td><td>"+data.user_items[i].description+"</td><td><a href='#' class='del-items' id="+data.user_items[i].id+">Edit</a></td></tr>";
-	          txt += "<tr><td>" + data.user_items[i].name + "</td><td>" + data.user_items[i].description + "</td><td><a href='#' class='edit-items' data-toggle='modal' data-target='#edit-item-modal'>Edit</a></td><td><a href='#' class='del-items' data-id=" + data.user_items[i].id + ">Delete</a></td></tr>";
-	          // let id = edit.user_items[i].id;
-	          // $('#editname').val(data.user_items[i].name);
-	          // $('#editdes').val(data.user_items[i].description);
+	          txt += "<tr><td>" + data.user_items[i].name + "</td><td>" + data.user_items[i].description + "</td><td><a href='#' class='edit-items' id='Edit" + data.user_items[i].id + "'>Edit</a></td><td><a href='#' class='del-items' id=" + data.user_items[i].id + ">Delete</a></td></tr>";
 	        }
 	      }
 	      if (txt !== '') {
@@ -512,14 +514,39 @@ webpackJsonp([0],[
 	var onDeleteItems = function onDeleteItems(event) {
 	  debugger;
 	  event.preventDefault();
-	  var data = $(event.target).data('id');
+	  // let data = $(event.target).data('id');
+	  var data = this.id;
 	  api.deleteItems(data).then(onDeleteItemsSuccess).catch(failure);
+	};
+
+	var onUpdateItemsSuccess = function onUpdateItemsSuccess(data) {
+	  console.log(data);
+	  api.viewItems().then(onViewItemsSuccess).catch(failure);
+	};
+
+	var onUpdateItems = function onUpdateItems(event) {
+	  event.preventDefault();
+	  debugger;
+	  // let edit = $(event.target).data('id');
+	  var data = getFormFields(this);
+	  console.log(data);
+	  api.updateItem(data).then(onUpdateItemsSuccess).catch(failure);
+	};
+
+	var onEditClick = function onEditClick(event) {
+	  event.preventDefault();
+	  debugger;
+	  $('#edit-item-modal').modal('show');
+	  var id = this.id;
+	  var len = this.id.length;
+	  var editId = id.substring(4, len);
+	  $('#edit-item-modal #edit_id').val(editId);
 	};
 
 	var addHandlers = function addHandlers() {
 	  $('.del-items').on('click', onDeleteItems);
-	  $('.edit-item-form').on('submit', update.onUpdateItems);
-	  // $('.searchtable').on('submit', 'edit-items', update.onUpdateItems);
+	  $('.edit-items').on('click', onEditClick);
+	  $('.edit-item-form').on('submit', onUpdateItems);
 	};
 
 	module.exports = {
@@ -535,33 +562,9 @@ webpackJsonp([0],[
 
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 
-	var api = __webpack_require__(14);
-	var ui = __webpack_require__(15);
 	var getFormFields = __webpack_require__(5);
-
-	var onUpdateItems = function onUpdateItems(event) {
-	  event.preventDefault();
-	  debugger;
-	  var edit = $(event.target).data('id');
-	  var data = getFormFields(this);
-	  console.log(data);
-	  api.updateItem(data).then(console.log('success')).catch(ui.failure);
-	};
-
-	module.exports = {
-	  onUpdateItems: onUpdateItems
-	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
-
-/***/ },
-/* 17 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function($) {'use strict';
-
-	var getFormFields = __webpack_require__(5);
-	var api = __webpack_require__(18);
-	var ui = __webpack_require__(19);
+	var api = __webpack_require__(17);
+	var ui = __webpack_require__(18);
 
 	var onSearchItemLink = function onSearchItemLink(event) {
 	  // debugger;
@@ -595,7 +598,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ },
-/* 18 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
@@ -631,15 +634,15 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ },
-/* 19 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 
-	var api = __webpack_require__(18);
+	var api = __webpack_require__(17);
 	// const requestItems = require('./../requestitems/requestitems');
 
-	var delete_table = function delete_table() {
+	var deleteTable = function deleteTable() {
 	  // debugger;
 	  var table = document.getElementById('search-table');
 	  var rowCount = table.rows.length;
@@ -671,7 +674,7 @@ webpackJsonp([0],[
 	// };
 
 	var onSearchItemSuccess = function onSearchItemSuccess(data) {
-	  delete_table();
+	  deleteTable();
 	  console.log(data);
 	  debugger;
 	  if (data) {
@@ -701,13 +704,13 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ },
-/* 20 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 
-	var api = __webpack_require__(21);
-	var ui = __webpack_require__(22);
+	var api = __webpack_require__(20);
+	var ui = __webpack_require__(21);
 	var getFormFields = __webpack_require__(5);
 
 	var onRequestItem = function onRequestItem(event) {
@@ -730,7 +733,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ },
-/* 21 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
@@ -755,7 +758,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ },
-/* 22 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
@@ -771,6 +774,29 @@ webpackJsonp([0],[
 	module.exports = {
 	  onRequestItemSuccess: onRequestItemSuccess,
 	  failure: failure
+	};
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function($) {'use strict';
+
+	var onRequestLink = function onRequestLink() {
+	  $('.requests-div').show();
+	  $('.add-books-div').hide();
+	  $('.delete-books-div').hide();
+	  $('.search-books-div').hide();
+	  $('.search-form').hide();
+	};
+
+	var addHandlers = function addHandlers() {
+	  $('.requests-div').on('click', onRequestLink);
+	};
+
+	module.exports = {
+	  addHandlers: addHandlers
 	};
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
