@@ -251,6 +251,7 @@
                 <th>Description</th>
                 <th>Owner</th>
                 <th></th>
+                <th></th>
               </tr>
             </table>
           </div>
@@ -272,20 +273,20 @@
           <div class="modal-body">
             <form class="request-item-form">
               <div class="form-group">
-                <input type="text" name="request[borrowed_user_item_id]"
-                       id="requested-user-id1">
+                <input type="hidden" name="request[user_item_id]"
+                       id="requested-user_item_id">
               </div>
               <div class="form-group">
-                <input type="text" name="request[lent_user_item_id]"
-                       id="requested-user-id2">
+                <input type="hidden" name="request[user_id]"
+                       id="requesting-user-id">
               </div>
               <div class="form-group">
-                <label>Location</label>
-                <input type="text" name="request[location]">
+                <label>Mailing address</label>
+                <input type="text" name="request[mailing_address]">
               </div>
               <div class="form-group">
-                <label>Duration</label>
-                <input type="text" name="request[duration]">
+                <label>Return Date</label>
+                <input type="text" name="request[return_date]">
               </div>
 
               <button type="submit" class="btn btn-default">Request</button>

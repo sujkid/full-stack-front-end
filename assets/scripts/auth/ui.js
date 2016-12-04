@@ -9,7 +9,7 @@ const signInSuccess = data => {
   store.user = data.user;
   $('#user-id-form').val(store.user.id);
   $('#search-user-id-form').val(store.user.id);
-  $('#requested-user-id1').val(store.user.id);
+  $('#requesting-user-id').val(store.user.id);
   success(data);
   console.log(data);
   $('#change-pw').show();
