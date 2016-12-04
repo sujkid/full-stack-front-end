@@ -3,6 +3,7 @@
 const getFormFields = require(`../../../../lib/get-form-fields`);
 const api = require('./api');
 const ui = require('./ui');
+const edit = require('../../edit');
 
 const onSearchItemLink = function(event) {
   // debugger;
@@ -17,6 +18,7 @@ const onSearchItems = function(event) {
   // debugger;
   $('.search-form').hide();
   let data = getFormFields(this);
+  edit.item = data.item;
   console.log(data);
   event.preventDefault();
   $('.search-form').hide();
