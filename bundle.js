@@ -231,8 +231,7 @@ webpackJsonp([0],[
 	'use strict';
 
 	var config = {
-	  // host: 'http://localhost:4741',
-	  host: 'https://blooming-inlet-95288.herokuapp.com'
+	  host: 'http://localhost:4741'
 	};
 
 	module.exports = config;
@@ -263,7 +262,7 @@ webpackJsonp([0],[
 	  $('#search-user-id-form').val(store.user.id);
 	  $('#requesting-user-id').val(store.user.id);
 	  success(data);
-	  console.log(data);
+	  // console.log(data);
 	  $('#change-pw').show();
 	  $('#sign-out').show();
 	  $('#sign-in').hide();
@@ -373,7 +372,7 @@ webpackJsonp([0],[
 	// const store = require('../../store');
 
 	var onAddItemSuccess = function onAddItemSuccess(data) {
-	  console.log(data);
+	  // console.log(data);
 	};
 
 	var failure = function failure() /*error*/{};
@@ -395,7 +394,7 @@ webpackJsonp([0],[
 	var ui = __webpack_require__(15);
 
 	var onViewItemLink = function onViewItemLink(event) {
-	  debugger;
+	  // debugger;
 	  event.preventDefault();
 	  $('.add-books-div').hide();
 	  $('.search-books-div').hide();
@@ -472,7 +471,7 @@ webpackJsonp([0],[
 	var getFormFields = __webpack_require__(5);
 
 	var failure = function failure() {
-	  console.log('fixxit');
+	  // console.log('fixxit');
 	};
 
 	var deleteTable = function deleteTable() {
@@ -487,7 +486,7 @@ webpackJsonp([0],[
 	var onViewItemsSuccess = function onViewItemsSuccess(data) {
 	  deleteTable();
 	  //debugger;
-	  console.log(data);
+	  // console.log(data);
 	  if (data) {
 	    var len = data.user_items.length;
 	    var txt = '';
@@ -509,12 +508,12 @@ webpackJsonp([0],[
 
 	var onDeleteItemsSuccess = function onDeleteItemsSuccess(data) {
 	  // debugger;
-	  console.log(data);
+	  // console.log(data);
 	  api.viewItems().then(onViewItemsSuccess).catch(failure);
 	};
 
 	var onDeleteItems = function onDeleteItems(event) {
-	  debugger;
+	  // debugger;
 	  event.preventDefault();
 	  // let data = $(event.target).data('id');
 	  var data = this.id;
@@ -522,22 +521,22 @@ webpackJsonp([0],[
 	};
 
 	var onUpdateItemsSuccess = function onUpdateItemsSuccess(data) {
-	  console.log(data);
+	  // console.log(data);
 	  api.viewItems().then(onViewItemsSuccess).catch(failure);
 	};
 
 	var onUpdateItems = function onUpdateItems(event) {
 	  event.preventDefault();
-	  debugger;
+	  // debugger;
 	  // let edit = $(event.target).data('id');
 	  var data = getFormFields(this);
-	  console.log(data);
+	  // console.log(data);
 	  api.updateItem(data).then(onUpdateItemsSuccess).catch(failure);
 	};
 
 	var onEditClick = function onEditClick(event) {
 	  event.preventDefault();
-	  debugger;
+	  // debugger;
 	  $('#edit-item-modal').modal('show');
 	  var id = this.id;
 	  var len = this.id.length;
@@ -584,11 +583,11 @@ webpackJsonp([0],[
 	  $('.search-form').hide();
 	  var data = getFormFields(this);
 	  edit.item = data.item;
-	  console.log(data);
+	  // console.log(data);
 	  event.preventDefault();
 	  $('.search-form').hide();
 	  $('.search-books-div').show();
-	  debugger;
+	  // debugger;
 	  api.searchItem(data).then(ui.onSearchItemSuccess).catch(ui.failure);
 	};
 
@@ -657,12 +656,12 @@ webpackJsonp([0],[
 	};
 
 	var failure = function failure() {
-	  console.log('fail');
+	  // console.log('fail');
 	};
 
 	var onRequestClick = function onRequestClick(event) {
 	  event.preventDefault();
-	  debugger;
+	  // debugger;
 	  $('#request-item-modal').modal('show');
 	  var id = this.id;
 	  $('#request-item-modal #requested-user_item_id').val(id);
@@ -692,8 +691,8 @@ webpackJsonp([0],[
 
 	var onSearchItemSuccess = function onSearchItemSuccess(data) {
 	  deleteTable();
-	  console.log(data);
-	  debugger;
+	  // console.log(data);
+	  // debugger;
 	  if (data) {
 	    var len = data.user_items.length;
 	    var txt = '';
@@ -701,7 +700,7 @@ webpackJsonp([0],[
 	      for (var i = 0; i < len; i++) {
 	        if (data.user_items[i].user_name) {
 	          // txt += "<tr><td>"+data.user_items[i].name+"</td><td>"+data.user_items[i].description+"</td><td>"+data.user_items[i].user_name+"</td><td><a href='#' class='request-item' id="+data.user_items[i].id+">Request</a></td></tr>";
-	          txt += "<tr><td>" + data.user_items[i].name + "</td><td>" + data.user_items[i].description + "</td><td>" + data.user_items[i].user_name + "</td><td></a></td><td><a href='#' class='request-items' id=" + data.user_items[i].id + ">Select</a></td><td>" + data.user_items[i].status + "</td></tr>";
+	          txt += "<tr><td>" + data.user_items[i].name + "</td><td>" + data.user_items[i].description + "</td><td>" + data.user_items[i].user_name + "</td><td>" + data.user_items[i].status + "</td><td><a href='#' class='request-items' id=" + data.user_items[i].id + ">Select</a></td></tr>";
 	          // $('#request-id').val(data.user_items[i].id);
 	          // $('#requested-user-id2').val(data.user_items[i].user_name);
 	        }
@@ -744,9 +743,9 @@ webpackJsonp([0],[
 	  var data = getFormFields(this);
 	  event.preventDefault();
 	  // $('#request-name').val(data.)
-	  debugger;
+	  // debugger;
 	  // let data = this.id;
-	  console.log(data);
+	  // console.log(data);
 	  api.requestItem(data).then(ui.onRequestItemSuccess).catch(ui.failure);
 	};
 
@@ -795,16 +794,16 @@ webpackJsonp([0],[
 	var edit = __webpack_require__(19);
 
 	var onRequestItemSuccess = function onRequestItemSuccess() {
-	  debugger;
+	  // debugger;
 	  // let book_name = document.getElementById('book_name');
 	  var data = {};
 	  data.item = edit.item;
-	  console.log(data.item);
+	  // console.log(data.item);
 	  searchApi.searchItem(data).then(searchUi.onSearchItemSuccess).catch(searchUi.failure);
 	};
 
 	var failure = function failure() {
-	  console.log("fail");
+	  // console.log("fail");
 	};
 
 	module.exports = {
@@ -895,18 +894,18 @@ webpackJsonp([0],[
 	var api = __webpack_require__(24);
 
 	var failure = function failure() {
-	  console.log('failure');
+	  // console.log('failure');
 	};
 
 	var onAcceptRequestSuccess = function onAcceptRequestSuccess(data) {
-	  console.log('sucess');
-	  console.log(data);
+	  // console.log('sucess');
+	  // console.log(data);
 	  api.requestInbox().then(onRequestInboxSuccess).catch(failure);
 	};
 
 	var onAccept = function onAccept(event) {
 	  event.preventDefault();
-	  debugger;
+	  // debugger;
 	  var id = this.id;
 	  var len = this.id.length;
 	  var acceptUserItemId = id.substring(6, len);
@@ -914,13 +913,13 @@ webpackJsonp([0],[
 	};
 
 	var onRejectedRequestSuccess = function onRejectedRequestSuccess() {
-	  console.log('sucess');
+	  // console.log('sucess');
 	  api.requestInbox().then(onRequestInboxSuccess).catch(failure);
 	};
 
 	var onReject = function onReject() {
 	  event.preventDefault();
-	  debugger;
+	  // debugger;
 	  api.rejectRequest(this.id).then(onRejectedRequestSuccess).catch(failure);
 	};
 
@@ -940,8 +939,8 @@ webpackJsonp([0],[
 
 	var onRequestInboxSuccess = function onRequestInboxSuccess(data) {
 	  deleteTable();
-	  debugger;
-	  console.log(data);
+	  // debugger;
+	  // console.log(data);
 	  if (data) {
 	    var len = data.requests.length;
 	    var txt = '';
