@@ -1,15 +1,21 @@
 'use strict';
 
+const api = require('./api');
+const ui = require('./ui');
+
 const onRequestLink = function() {
-  $('.requests-div').show();
+  $('.inbox-div').show();
   $('.add-books-div').hide();
   $('.delete-books-div').hide();
   $('.search-books-div').hide();
   $('.search-form').hide();
+  api.requestInbox()
+    .then(ui.onRequestInboxSuccess)
+    .catch(ui.failure);
 };
 
 const addHandlers = function() {
-  $('.requests-div').on('click', onRequestLink);
+  $('.inboxb').on('click', onRequestLink);
 };
 
 module.exports = {

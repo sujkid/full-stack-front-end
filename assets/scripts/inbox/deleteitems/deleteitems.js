@@ -11,6 +11,7 @@ const onViewItemLink = function(event) {
   $('.search-books-div').hide();
   $('.delete-books-div').show();
   $('.search-form').hide();
+  $('.inbox-div').hide();
   api.viewItems()
     .then(ui.onViewItemsSuccess)
     .catch(ui.failure);
