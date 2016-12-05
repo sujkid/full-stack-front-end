@@ -20,11 +20,11 @@ const onSearchItems = function(event) {
   $('.search-form').hide();
   let data = getFormFields(this);
   edit.item = data.item;
-  console.log(data);
+  // console.log(data);
   event.preventDefault();
   $('.search-form').hide();
   $('.search-books-div').show();
-  debugger;
+  // debugger;
   api.searchItem(data)
     .then(ui.onSearchItemSuccess)
     .catch(ui.failure);

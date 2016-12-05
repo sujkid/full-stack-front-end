@@ -3,12 +3,12 @@
 const api = require('./api');
 
 const failure = function() {
-  console.log('failure');
+  // console.log('failure');
 };
 
 const onAcceptRequestSuccess = function(data) {
-  console.log('sucess');
-  console.log(data);
+  // console.log('sucess');
+  // console.log(data);
   api.requestInbox()
   .then(onRequestInboxSuccess)
   .catch(failure);
@@ -16,7 +16,7 @@ const onAcceptRequestSuccess = function(data) {
 
 const onAccept = function(event) {
   event.preventDefault();
-  debugger;
+  // debugger;
   let id = this.id;
   let len = this.id.length;
   let acceptUserItemId = id.substring(6, len);
@@ -26,7 +26,7 @@ const onAccept = function(event) {
 };
 
 const onRejectedRequestSuccess = function() {
-  console.log('sucess');
+  // console.log('sucess');
   api.requestInbox()
   .then(onRequestInboxSuccess)
   .catch(failure);
@@ -34,7 +34,7 @@ const onRejectedRequestSuccess = function() {
 
 const onReject = function() {
   event.preventDefault();
-  debugger;
+  // debugger;
   api.rejectRequest(this.id)
     .then(onRejectedRequestSuccess)
     .catch(failure);
@@ -56,8 +56,8 @@ const deleteTable = function() {
 
 const onRequestInboxSuccess = function(data) {
   deleteTable();
-  debugger;
-  console.log(data);
+  // debugger;
+  // console.log(data);
   if (data) {
     let len = data.requests.length;
     let txt = '';

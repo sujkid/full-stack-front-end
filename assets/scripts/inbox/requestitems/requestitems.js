@@ -8,9 +8,9 @@ const onRequestItem = function(event) {
     let data = getFormFields(this);
     event.preventDefault();
     // $('#request-name').val(data.)
-    debugger;
+    // debugger;
     // let data = this.id;
-    console.log(data);
+    // console.log(data);
     api.requestItem(data)
       .then(ui.onRequestItemSuccess)
       .catch(ui.failure);
