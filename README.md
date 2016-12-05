@@ -55,8 +55,8 @@ As a user, I can
 -  delete my books
 -  search for books that belong to others
 -  select books that I am interested in
--  send a request to the owner of the book that I am interested in, and request
-   a location to meet up to swap, and duration of time to hold the book.
+-  send a request to the owner of the book that I am interested in, with
+   a mailing address, and the return date.
 -  receive requests from others to borrow books in my "inbox".
 -  accept or reject requests that I receive from others.
 
