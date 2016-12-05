@@ -12,6 +12,7 @@ const onSearchItemLink = function(event) {
   $('.delete-books-div').hide();
   $('.search-form').show();
   $('.search-books-div').hide();
+  $('.inbox-div').hide();
 };
 
 const onSearchItems = function(event) {

@@ -28,5 +28,5 @@ $(() => {
   $('.delete-books-div').hide();
   $('.search-books-div').hide();
   $('.search-form').hide();
-  $('.requests-div').hide();
+  $('.inbox-div').hide();
 });

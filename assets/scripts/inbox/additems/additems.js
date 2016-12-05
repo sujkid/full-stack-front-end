@@ -9,7 +9,7 @@ const onAddItemLink = function() {
   $('.delete-books-div').hide();
   $('.search-books-div').hide();
   $('.search-form').hide();
-  $('.requests-div').hide();
+  $('.inbox-div').hide();
 };
 
 const onAddItem = function(event) {
