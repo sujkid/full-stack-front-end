@@ -3,7 +3,7 @@
 // const store = require('../../store');
 
 const onAddItemSuccess = (data) => {
-  console.log(data);
+  // console.log(data);
 };
 
 const failure = (/*error*/) => {

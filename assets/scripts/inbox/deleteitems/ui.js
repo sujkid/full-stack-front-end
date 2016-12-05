@@ -4,7 +4,7 @@ const api = require('./api');
 const getFormFields = require(`../../../../lib/get-form-fields`);
 
 const failure = function() {
-  console.log('fixxit');
+  // console.log('fixxit');
 };
 
 const deleteTable = function() {
@@ -19,7 +19,7 @@ const deleteTable = function() {
 const onViewItemsSuccess = function(data) {
   deleteTable();
   //debugger;
-  console.log(data);
+  // console.log(data);
   if (data) {
     let len = data.user_items.length;
     let txt = '';
@@ -41,14 +41,14 @@ const onViewItemsSuccess = function(data) {
 
 const onDeleteItemsSuccess = function(data) {
   // debugger;
-  console.log(data);
+  // console.log(data);
   api.viewItems()
   .then(onViewItemsSuccess)
   .catch(failure);
 };
 
 const onDeleteItems = function(event) {
-  debugger;
+  // debugger;
   event.preventDefault();
   // let data = $(event.target).data('id');
   let data = this.id;
@@ -58,7 +58,7 @@ const onDeleteItems = function(event) {
 };
 
 const onUpdateItemsSuccess = function(data) {
-  console.log(data);
+  // console.log(data);
   api.viewItems()
   .then(onViewItemsSuccess)
   .catch(failure);
@@ -66,10 +66,10 @@ const onUpdateItemsSuccess = function(data) {
 
 const onUpdateItems = function(event) {
   event.preventDefault();
-  debugger;
+  // debugger;
   // let edit = $(event.target).data('id');
   let data = getFormFields(this);
-  console.log(data);
+  // console.log(data);
   api.updateItem(data)
     .then(onUpdateItemsSuccess)
     .catch(failure);
@@ -77,7 +77,7 @@ const onUpdateItems = function(event) {
 
 const onEditClick = function(event) {
   event.preventDefault();
-  debugger;
+  // debugger;
   $('#edit-item-modal').modal('show');
   let id = this.id;
   let len = this.id.length;

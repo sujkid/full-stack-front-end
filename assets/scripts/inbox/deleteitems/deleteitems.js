@@ -5,7 +5,7 @@ const api = require('./api');
 const ui = require('./ui');
 
 const onViewItemLink = function(event) {
-  debugger;
+  // debugger;
   event.preventDefault();
   $('.add-books-div').hide();
   $('.search-books-div').hide();

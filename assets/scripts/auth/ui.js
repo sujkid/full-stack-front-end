@@ -11,7 +11,7 @@ const signInSuccess = data => {
   $('#search-user-id-form').val(store.user.id);
   $('#requesting-user-id').val(store.user.id);
   success(data);
-  console.log(data);
+  // console.log(data);
   $('#change-pw').show();
   $('#sign-out').show();
   $('#sign-in').hide();
