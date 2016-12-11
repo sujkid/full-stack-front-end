@@ -26,20 +26,21 @@ const onViewItemsSuccess = function(data) {
     // debugger;
     if (len > 0) {
       for ( let i = 0;i < len;i++) {
-        if (data.user_items[i].name && data.user_items[i].description) {
+        if (data.user_items[i].name) {
             // txt += "<tr><td>"+data.user_items[i].name+"</td><td>"+data.user_items[i].description+"</td><td><a href='#' class='del-items' id="+data.user_items[i].id+">Edit</a></td></tr>";
-            txt += "<tr><td>"+data.user_items[i].name+"</td><td>"+data.user_items[i].description+"</td><td><a href='#' class='edit-items' id='Edit"+data.user_items[i].id+"'>Edit</a></td><td><a href='#' class='del-items' id="+data.user_items[i].id+">Delete</a></td></tr>";
+            txt += "<tr><td class='tabd'>" + data.user_items[i].name + "</td><td class='tabd'>"+data.user_items[i].description + "</td><td class='tabd'><a href='#' class='edit-items' id=" + data.user_items[i].id + "'>Edit</a></td><td class='tabd'><a href='#' class='del-items' id=" + data.user_items[i].id + ">Delete</a></td></tr>";
         }
       }
       if (txt !== '') {
-          $('.deltable').append(txt).removeClass('hidden');
+        $('.deltable').append(txt).removeClass('hidden');
       }
     }
   }
+
   addHandlers();
 };
 
-const onDeleteItemsSuccess = function(data) {
+const onDeleteItemsSuccess = function (data) {
   // debugger;
   // console.log(data);
   api.viewItems()

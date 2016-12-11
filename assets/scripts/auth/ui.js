@@ -18,6 +18,11 @@ const signInSuccess = data => {
   $('#sign-up').hide();
   $('#sign-in-error').hide();
   $('.inbox').show();
+  $('.inbox-div').hide();
+  $('.add-books-div').hide();
+  $('.delete-books-div').hide();
+  $('.search-books-div').hide();
+  $('.search-form').hide();
 };
 
 const signOutSuccess = (/*data*/) => {

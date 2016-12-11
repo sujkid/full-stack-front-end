@@ -15,6 +15,9 @@ const onAddItemLink = function() {
 const onAddItem = function(event) {
   $('#user-item-status').val('Available');
   let data = getFormFields(this);
+  if(!data.item.name) {
+    return;
+  }
   event.preventDefault();
   api.addItem(data)
     .then(ui.onAddItemSuccess)

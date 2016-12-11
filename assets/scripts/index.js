@@ -26,7 +26,11 @@ $(() => {
   $('.inbox').hide();
   $('.add-books-div').hide();
   $('.delete-books-div').hide();
+  // $('.search-div').hide();
   $('.search-books-div').hide();
   $('.search-form').hide();
   $('.inbox-div').hide();
+  $('#d-picker').datepicker({
+    format: 'yyyy-mm-dd'
+  });
 });

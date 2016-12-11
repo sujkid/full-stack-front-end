@@ -16,7 +16,7 @@ const onRequestItem = function(event) {
       .catch(ui.failure);
 };
 
-const addHandlers = function() {
+const addHandlers = function () {
   $('.request-item-form').on('submit', onRequestItem);
 };
 

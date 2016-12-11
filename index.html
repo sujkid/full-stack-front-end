@@ -198,18 +198,19 @@
     			<li><a href="#" class="searchb">Search</a></li>
   			</ul>
     	</div>
+
       <div class="inbox-div">
         <form class="inbox-books-form">
           <div class="form-group">
             <table class="inboxtable" id="inbox-table">
-              <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>From</th>
-                <th>Mailing Address</th>
-                <th>Return Date</th>
-                <th>Accept</th>
-                <th>Reject</th>
+              <tr class="tabr">
+                <th class="tabh">Name</th>
+                <th class="tabh">Description</th>
+                <th class="tabh">From</th>
+                <th class="tabh">Mailing Address</th>
+                <th class="tabh">Return Date</th>
+                <th class="tabh">Accept</th>
+                <th class="tabh">Reject</th>
               </tr>
             </table>
           </div>
@@ -235,20 +236,22 @@
                   data-dismiss="modal">Cancel</button>
         </form>
       </div>
+
       <div class="delete-books-div">
         <form class="delete-books-form">
           <div class="form-group">
             <table class="deltable" id="del-table">
-              <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Edit</th>
-                <th>Delete</th>
+              <tr class="tabr">
+                <th class="tabh">Name</th>
+                <th class="tabh">Description</th>
+                <th class="tabh">Edit</th>
+                <th class="tabh">Delete</th>
               </tr>
             </table>
           </div>
         </form>
       </div>
+
       <div class="search-div">
         <form class="search-form">
           <div class="form-group">
@@ -259,16 +262,17 @@
           <button type="submit" class="btn btn-default">Search</button>
         </form>
       </div>
+
       <div class="search-books-div">
         <form class="search-books-form">
           <div class="form-group">
             <table class="searchtable" id="search-table">
-              <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Owner</th>
-                <th>Status</th>
-                <th>Select</th>
+              <tr class="tabr">
+                <th class="tabh">Name</th>
+                <th class="tabh">Description</th>
+                <th class="tabh">Owner</th>
+                <th class="tabh">Status</th>
+                <th class="tabh">Select</th>
               </tr>
             </table>
           </div>
@@ -303,11 +307,12 @@
               </div>
               <div class="form-group">
                 <label>Return Date</label>
-                <input type="text" name="request[return_date]">
+                <input type="text" id="d-picker" name="request[return_date]">
               </div>
 
               <button type="submit" class="btn btn-default">Request</button>
-              <button type="button" class="btn btn-default">Cancel</button>
+              <button type="button" class="btn btn-default"
+                      data-dismiss="modal">Cancel</button>
             </form>
           </div>
         </div>
@@ -340,7 +345,8 @@
               </div>
 
               <button type="submit" class="btn btn-default">Update</button>
-              <button type="button" class="btn btn-default">Cancel</button>
+              <button type="button" class="btn btn-default"
+                      data-dismiss="modal">Cancel</button>
             </form>
           </div>
         </div>
