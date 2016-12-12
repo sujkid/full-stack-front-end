@@ -7,7 +7,21 @@ $header-color: #fff;
 $font-size: 30px;
 $black: #000;
 $side-background-color: #baa378;
-$side-margin-top: 50px;
+$body-background-size: 100%;
+$center-txt-align: center;
+$left-txt-align: left;
+$justify-txt-align: justify;
+$border-px: 1px;
+$flex: 1;
+$flex-display: flex;
+$block-display: block;
+$border-collapse-style: collapse;
+$padding50: 50px;
+$padding10: 10px;
+$zero-margin-padding: 0;
+$font-size: 20px;
+$side-panel-width: 140px;
+$table-padding: 15px;
 
 h3 {
   color: $header-color;
@@ -16,19 +30,19 @@ h3 {
 body {
   background-color: $background-color-body;
   // background: url('https://static.pexels.com/photos/33283/stack-of-books-vintage-books-book-books.jpg');
-  background-size: 100%;
+  background-size: $body-background-size;
   font-family: 'Shadows Into Light', cursive;
   font-size: $font-size;
 }
 
 .btns {
-  text-align: center;
-  width: 100%;
+  text-align: $center-txt-align;
+  width: $body-background-size;
 }
 
 .inbox-div {
   background: $background-color-body;
-  background-size: 100%;
+  background-size: $body-background-size;
 }
 
 a {
@@ -37,65 +51,69 @@ a {
 
 .side {
   background: $side-background-color;
-  border: 1px solid $black;
-  flex: 1;
-  font-size: 20px;
+  border: $border-px solid $black;
+  flex: $flex;
+  font-size: $font-size;
   max-width: 10%;
-  min-width: 140px;
-  text-align: justify;
+  min-width: $side-panel-width;
+  text-align: $justify-txt-align;
 }
 
 .side-items {
   font-size: $font-size;
-  margin: 0;
-  margin-top: $side-margin-top;
-  padding: 0;
-  text-align: left;
+  margin: $zero-margin-padding;
+  margin-top: $padding50;
+  padding: $zero-margin-padding;
+  text-align: $left-txt-align;
 }
 
 .side-items li {
-  display: block;
-  padding: 50px 50px 50px 10px;
+  display: $block-display;
+  padding: $padding50 $padding50 $padding50 $padding10;
 }
 
 .inbox {
-  display: flex;
+  display: $flex-display;
 }
 
 .add-books-div,
 .search-form,
 .delete-books-div {
   min-width: 75%;
-  padding-left: 30px;
+  padding-left: $font-size;
 }
 
 .delete-books-div {
   min-width: 75%;
-  padding-left: 30px;
+  padding-left: $font-size;
 }
 
 .deltable,
 .search-table,
 .tabh,
 .tabr {
-  border: 1px solid $black;
-  border-collapse: collapse;
-  width: 100%;
+  border: $border-px solid $black;
+  border-collapse: $border-collapse-style;
+  width: $body-background-size;
+}
+
+.tabr {
+  border: $border-px solid $black;
 }
 
 .tabh {
-  padding: 15px;
-  text-align: left;
+  padding: $table-padding;
+  text-align: $left-txt-align;
   width: 45%;
 }
 
 .tabd {
-  text-align: left;
+  padding-left: $font-size;
+  text-align: $left-txt-align;
   width: 5%;
-  padding-left: 20px;
 }
 
 .search-books-div {
   min-width: 75%;
-  padding-left: 30px;
+  padding-left: $font-size;
 }

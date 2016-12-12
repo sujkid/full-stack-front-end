@@ -4,9 +4,10 @@ const api = require('./api');
 const ui = require('./ui');
 const getFormFields = require(`../../../../lib/get-form-fields`);
 
-const onRequestItem = function(event) {
+const onRequestItem = function (event) {
     let data = getFormFields(this);
     event.preventDefault();
+
     // $('#request-name').val(data.)
     // debugger;
     // let data = this.id;

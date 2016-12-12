@@ -3,7 +3,7 @@
 const api = require('./api');
 const ui = require('./ui');
 
-const onRequestLink = function() {
+const onRequestLink = function () {
   $('.inbox-div').show();
   $('.add-books-div').hide();
   $('.delete-books-div').hide();
