@@ -3,11 +3,13 @@
 const api = require('./api');
 const getFormFields = require(`../../../../lib/get-form-fields`);
 
-const failure = function() {
+const failure = function () {
+
   // console.log('fixxit');
 };
 
-const deleteTable = function() {
+const deleteTable = function () {
+
   // debugger;
   let table = document.getElementById("del-table");
   let rowCount = table.rows.length;
@@ -16,8 +18,9 @@ const deleteTable = function() {
   }
 };
 
-const onViewItemsSuccess = function(data) {
+const onViewItemsSuccess = function (data) {
   deleteTable();
+
   //debugger;
   // console.log(data);
   if (data) {
@@ -27,8 +30,9 @@ const onViewItemsSuccess = function(data) {
     if (len > 0) {
       for ( let i = 0;i < len;i++) {
         if (data.user_items[i].name) {
+
             // txt += "<tr><td>"+data.user_items[i].name+"</td><td>"+data.user_items[i].description+"</td><td><a href='#' class='del-items' id="+data.user_items[i].id+">Edit</a></td></tr>";
-            txt += "<tr><td class='tabd'>" + data.user_items[i].name + "</td><td class='tabd'>"+data.user_items[i].description + "</td><td class='tabd'><a href='#' class='edit-items' id=" + data.user_items[i].id + "'>Edit</a></td><td class='tabd'><a href='#' class='del-items' id=" + data.user_items[i].id + ">Delete</a></td></tr>";
+            txt += "<tr class='tabr'><td class='tabd'>" + data.user_items[i].name + "</td><td class='tabd'>"+data.user_items[i].description + "</td><td class='tabd'><a href='#' class='edit-items' id=" + data.user_items[i].id + "'>Edit</a></td><td class='tabd'><a href='#' class='del-items' id=" + data.user_items[i].id + ">Delete</a></td></tr>";
         }
       }
       if (txt !== '') {
@@ -41,6 +45,7 @@ const onViewItemsSuccess = function(data) {
 };
 
 const onDeleteItemsSuccess = function (data) {
+
   // debugger;
   // console.log(data);
   api.viewItems()
@@ -48,9 +53,11 @@ const onDeleteItemsSuccess = function (data) {
   .catch(failure);
 };
 
-const onDeleteItems = function(event) {
+const onDeleteItems = function (event) {
+
   // debugger;
   event.preventDefault();
+
   // let data = $(event.target).data('id');
   let data = this.id;
   api.deleteItems(data)
@@ -58,26 +65,29 @@ const onDeleteItems = function(event) {
     .catch(failure);
 };
 
-const onUpdateItemsSuccess = function(data) {
+const onUpdateItemsSuccess = function (data) {
   // console.log(data);
   api.viewItems()
   .then(onViewItemsSuccess)
   .catch(failure);
 };
 
-const onUpdateItems = function(event) {
+const onUpdateItems = function (event) {
   event.preventDefault();
+
   // debugger;
   // let edit = $(event.target).data('id');
   let data = getFormFields(this);
+
   // console.log(data);
   api.updateItem(data)
     .then(onUpdateItemsSuccess)
     .catch(failure);
 };
 
-const onEditClick = function(event) {
+const onEditClick = function (event) {
   event.preventDefault();
+
   // debugger;
   $('#edit-item-modal').modal('show');
   let id = this.id;
@@ -86,7 +96,7 @@ const onEditClick = function(event) {
   $('#edit-item-modal #edit_id').val(editId);
 };
 
-const addHandlers = function() {
+const addHandlers = function () {
   $('.del-items').on('click', onDeleteItems);
   $('.edit-items').on('click', onEditClick);
   $('.edit-item-form').on('submit', onUpdateItems);

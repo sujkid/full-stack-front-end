@@ -3,7 +3,7 @@
 const config = require('../../config');
 const store = require('../../store');
 
-const requestInbox = function() {
+const requestInbox = function () {
   return $.ajax({
     url: config.host + '/inbox_items/' + store.user.id,
     method: 'GET',
@@ -20,7 +20,7 @@ const acceptRequest = (data) =>
     data,
     headers: {
       Authorization: 'Token token=' + store.user.token,
-    }
+    },
   }
 );
 
@@ -30,7 +30,7 @@ const rejectRequest = (data) =>
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token,
-    }
+    },
   }
 );
 
