@@ -32,7 +32,8 @@ const onViewItemsSuccess = function (data) {
         if (data.user_items[i].name) {
 
             // txt += "<tr><td>"+data.user_items[i].name+"</td><td>"+data.user_items[i].description+"</td><td><a href='#' class='del-items' id="+data.user_items[i].id+">Edit</a></td></tr>";
-            txt += "<tr class='tabr'><td class='tabd'>" + data.user_items[i].name + "</td><td class='tabd'>"+data.user_items[i].description + "</td><td class='tabd'><a href='#' class='edit-items' id=" + data.user_items[i].id + "'>Edit</a></td><td class='tabd'><a href='#' class='del-items' id=" + data.user_items[i].id + ">Delete</a></td></tr>";
+            // txt += "<tr class='tabr'><td class='tabd'>" + data.user_items[i].name + "</td><td class='tabd'>"+data.user_items[i].description + "</td><td class='tabd'>"+data.user_items[i].status + "</td><td class='tabd'><a href='#' class='edit-items' id=Edit" + data.user_items[i].id + "'>Edit</a></td><td class='tabd'><a href='#' class='del-items' id=" + data.user_items[i].id + ">Delete</a></td></tr>";
+            txt += "<tr class='tabr'><td class='tabd'>" + data.user_items[i].name + "</td><td class='tabd'>"+data.user_items[i].description + "</td><td class='tabd'>"+data.user_items[i].status + "<input type='hidden' id=status" +data.user_items[i].id+" value=" +data.user_items[i].status+"></td><td class='tabd'><a href='#' class='edit-items' id=Edit" + data.user_items[i].id + ">Edit</a></td><td class='tabd'><a href='#' class='del-items' id=" + data.user_items[i].id + ">Delete</a></td></tr>";
         }
       }
       if (txt !== '') {
@@ -60,6 +61,10 @@ const onDeleteItems = function (event) {
 
   // let data = $(event.target).data('id');
   let data = this.id;
+  let status = document.getElementById('status'+data).value;
+  if(status !== 'Available') {
+    return;
+  }
   api.deleteItems(data)
     .then(onDeleteItemsSuccess)
     .catch(failure);
@@ -89,10 +94,15 @@ const onEditClick = function (event) {
   event.preventDefault();
 
   // debugger;
-  $('#edit-item-modal').modal('show');
+
   let id = this.id;
   let len = this.id.length;
   let editId = id.substring(4, len);
+  let status = document.getElementById('status'+editId).value;
+  if(status !== 'Available') {
+    return;
+  }
+  $('#edit-item-modal').modal('show');
   $('#edit-item-modal #edit_id').val(editId);
 };
 
