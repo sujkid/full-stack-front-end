@@ -12,6 +12,10 @@ const onRequestItem = function (event) {
     // debugger;
     // let data = this.id;
     // console.log(data);
+    if(!data.request.mailing_address || !data.request.return_date) {
+      $('#request-item-error-modal').modal('show');
+      return;
+    }
     api.requestItem(data)
       .then(ui.onRequestItemSuccess)
       .catch(ui.failure);
