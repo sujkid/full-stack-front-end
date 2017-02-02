@@ -75,7 +75,7 @@ const onRequestInboxSuccess = function (data) {
         if (data.requests[i].name) {
 
             // txt += "<tr><td>"+data.user_items[i].name+"</td><td>"+data.user_items[i].description+"</td><td><a href='#' class='del-items' id="+data.user_items[i].id+">Edit</a></td></tr>";
-            txt += "<tr class='tabr'><td class='tabd'>" + data.requests[i].name +"</td><td class='tabd'>"+data.requests[i].description+"</td><td class='tabd'>"+data.requests[i].user_name+"</td><td class='tabd'>"+data.requests[i].mailing_address+"</td><td class='tabd'>"+data.requests[i].return_date+"</td><td class='tabd'><a href='#' class='accept-req' id='Accept"+data.requests[i].user_items_id+"'>Accept</a></td><td class='tabd'><a href='#' class='reject-req' id="+data.requests[i].user_items_id+">Reject</a></td></tr>";
+            txt += "<tr class='tabr'><td class='tabd'>" + data.requests[i].name +"</td><td class='tabd'>"+data.requests[i].description+"</td><td class='tabd'>"+data.requests[i].user_name+"</td><td class='tabd'>"+data.requests[i].mailing_address+"</td><td class='tabd'>"+data.requests[i].return_date+"</td><td class='tabd'><button class='accept-req' id='Accept"+data.requests[i].user_items_id+"'>Accept</button></td><td class='tabd'><button class='reject-req' id="+data.requests[i].user_items_id+">Reject</button></td></tr>";
         }
       }
       if (txt !== '') {

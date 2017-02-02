@@ -33,7 +33,7 @@ const onViewItemsSuccess = function (data) {
 
             // txt += "<tr><td>"+data.user_items[i].name+"</td><td>"+data.user_items[i].description+"</td><td><a href='#' class='del-items' id="+data.user_items[i].id+">Edit</a></td></tr>";
             // txt += "<tr class='tabr'><td class='tabd'>" + data.user_items[i].name + "</td><td class='tabd'>"+data.user_items[i].description + "</td><td class='tabd'>"+data.user_items[i].status + "</td><td class='tabd'><a href='#' class='edit-items' id=Edit" + data.user_items[i].id + "'>Edit</a></td><td class='tabd'><a href='#' class='del-items' id=" + data.user_items[i].id + ">Delete</a></td></tr>";
-            txt += "<tr class='tabr'><td class='tabd'>" + data.user_items[i].name + "</td><td class='tabd'>"+data.user_items[i].description + "</td><td class='tabd'>"+data.user_items[i].status + "<input type='hidden' id=status" +data.user_items[i].id+" value=" +data.user_items[i].status+"></td><td class='tabd'><a href='#' class='edit-items' id=Edit" + data.user_items[i].id + ">Edit</a></td><td class='tabd'><a href='#' class='del-items' id=" + data.user_items[i].id + ">Delete</a></td></tr>";
+            txt += "<tr class='tabr'><td class='tabd'>" + data.user_items[i].name + "</td><td class='tabd'>"+data.user_items[i].description + "</td><td class='tabd'>"+data.user_items[i].status + "<input type='hidden' id=status" +data.user_items[i].id+" value=" +data.user_items[i].status+"></td><td class='tabd'><button class='edit-items' id=Edit" + data.user_items[i].id + ">Edit</button></td><td class='tabd'><button class='del-items' id=" + data.user_items[i].id + ">Delete</button></td></tr>";
         }
       }
       if (txt !== '') {
@@ -73,6 +73,7 @@ const onUpdateItemsSuccess = function (/*data*/) {
   // console.log(data);
   api.viewItems()
   .then(onViewItemsSuccess)
+  .then($('#edit-item-modal').modal('hide'))
   .catch(failure);
 };
 
@@ -82,6 +83,10 @@ const onUpdateItems = function (event) {
   // debugger;
   // let edit = $(event.target).data('id');
   let data = getFormFields(this);
+  if(!data.edit.name || !data.edit.description) {
+    $('#add-item-error-modal').modal('show');
+    return;
+  }
 
   // console.log(data);
   api.updateItem(data)
@@ -99,6 +104,7 @@ const onEditClick = function (event) {
     $('#error-on-edit').modal('show');
     return;
   }
+  $('.update-input').val('');
   $('#edit-item-modal').modal('show');
   $('#edit-item-modal #edit_id').val(editId);
 };
