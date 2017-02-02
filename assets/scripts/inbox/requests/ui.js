@@ -7,7 +7,7 @@ const failure = function () {
   // console.log('failure');
 };
 
-const onAcceptRequestSuccess = function (data) {
+const onAcceptRequestSuccess = function (/*data*/) {
 
   // console.log('sucess');
   // console.log(data);

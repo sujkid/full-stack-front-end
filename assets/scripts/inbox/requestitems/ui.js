@@ -11,6 +11,10 @@ const onRequestItemSuccess = function () {
   let data = {};
   data.item = edit.item;
 
+  $('.request-address').val('');
+  $('.request-date').val('');
+  $('#request-item-modal').modal('hide');
+
   // console.log(data.item);
   searchApi.searchItem(data)
     .then(searchUi.onSearchItemSuccess)

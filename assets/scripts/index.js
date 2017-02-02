@@ -30,6 +30,8 @@ $(() => {
   $('.search-books-div').hide();
   $('.search-form').hide();
   $('.inbox-div').hide();
+  $('.error-on-edit').hide();
+  $('.desc').text('Swap Jungle is a place for all book lovers to exchange your books with fellow book lovers! By joining Swap Jungle, you will become part of a community of other book lovers. Avid readers horde books like a squirrel hordes nuts, but even the most relentless pack rats can run out of space. Swap Jungle provides a free way for people to exchange books, find out about new books and obtain a new book to read without having to pay. Get your old books new readers! Sign up/Sign in to add your books, search for books and start reading!!!' );
   $('#d-picker').datepicker({
     format: 'yyyy-mm-dd'
   });

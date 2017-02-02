@@ -2,7 +2,12 @@
 
 const store = require('../store');
 
-const success = (/*data*/) => {
+const updatePasswordSuccess = (/*data*/) => {
+  $('#change-pw-modal').modal('hide');
+};
+
+const signUpSuccess = () => {
+  $('#sign-up-modal').modal('hide');
 };
 
 const signInSuccess = data => {
@@ -10,7 +15,7 @@ const signInSuccess = data => {
   $('#user-id-form').val(store.user.id);
   $('#search-user-id-form').val(store.user.id);
   $('#requesting-user-id').val(store.user.id);
-  success(data);
+  // success(data);
   // console.log(data);
   $('#change-pw').show();
   $('#sign-out').show();
@@ -23,6 +28,9 @@ const signInSuccess = data => {
   $('.delete-books-div').hide();
   $('.search-books-div').hide();
   $('.search-form').hide();
+  $('.desc').hide();
+  $('.landing-page').hide();
+  $('#sign-in-modal').modal('hide');
 };
 
 const signOutSuccess = (/*data*/) => {
@@ -33,6 +41,8 @@ const signOutSuccess = (/*data*/) => {
   $('#sign-in').show();
   $('#sign-up').show();
   $('.inbox').hide();
+  $('.desc').show();
+  $('.landing-page').show();
 };
 
 const failure = (/*error*/) => {
@@ -53,7 +63,9 @@ const onUpdatePasswordFailure = function() {
 
 module.exports = {
   failure,
-  success,
+  // success,
+  updatePasswordSuccess,
+  signUpSuccess,
   signInSuccess,
   signOutSuccess,
   onSignUpFailure,

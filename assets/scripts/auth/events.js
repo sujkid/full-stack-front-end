@@ -8,7 +8,7 @@ const onSignUp = function (event) {
   let data = getFormFields(this);
   event.preventDefault();
   api.signUp(data)
-    .then(ui.success)
+    .then(ui.signUpSuccess)
     .catch(ui.onSignUpFailure);
 };
 
@@ -24,7 +24,7 @@ const onUpdatePassword = function (event) {
   let data = getFormFields(this);
   event.preventDefault();
   api.updatePassword(data)
-    .then(ui.success)
+    .then(ui.updatePasswordSuccess)
     .catch(ui.onUpdatePasswordFailure);
 };
 
@@ -35,11 +35,21 @@ const onSignOut = function (event) {
    .catch(ui.failure);
 };
 
+const onSignInButton = function() {
+  $('.sign-in-input').val('');
+};
+
+const onSignUpButton = function() {
+  $('.sign-up-input').val('');
+};
+
 const addHandlers = () => {
   $('.sign-up-form').on('submit', onSignUp);
   $('.sign-in-form').on('submit', onSignIn);
   $('.change-pw-form').on('submit', onUpdatePassword);
   $('#sign-out').on('click', onSignOut);
+  $('#sign-in').on('click', onSignInButton);
+  $('#sign-up').on('click', onSignUpButton);
 };
 
 module.exports = {

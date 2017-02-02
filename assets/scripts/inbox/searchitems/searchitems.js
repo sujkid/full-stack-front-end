@@ -28,6 +28,7 @@ const onSearchItems = function (event) {
   $('.search-form').hide();
   $('.search-div').show();
   $('.search-books-div').show();
+  $('.search-book-name').val('');
 
   // debugger;
   api.searchItem(data)

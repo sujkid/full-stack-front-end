@@ -89,24 +89,24 @@
               <div class="form-group">
                 <label>Name</label>
                 <input type="text" name="credentials[name]"
-                       placeholder="Name">
+                       placeholder="Name" class="sign-up-input">
               </div>
               <div class="form-group">
                 <label>Email address</label>
                 <input type="text" name="credentials[email]"
-                       placeholder="E-Mail">
+                       placeholder="E-Mail" class="sign-up-input">
               </div>
 
               <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
                 <input type="password" name="credentials[password]"
-                       placeholder="Password">
+                       placeholder="Password" class="sign-up-input">
               </div>
 
               <div class="form-group">
                 <label for="examplePasswordConfirmation">Password</label>
                 <input type="password" name="credentials[password_confirmation]"
-                       placeholder="Confirm Password">
+                       placeholder="Confirm Password" class="sign-up-input">
               </div>
 
               <button type="submit" class="btn btn-default">Submit</button>
@@ -134,16 +134,16 @@
               <div class="form-group">
                 <label>Email address</label>
                 <input type="text" name="credentials[email]"
-                       placeholder="E-Mail">
+                       placeholder="E-Mail" class="sign-in-input">
               </div>
 
               <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
                 <input type="password" name="credentials[password]"
-                       placeholder="Password">
+                       placeholder="Password" class="sign-in-input">
               </div>
               <button type="submit" class="btn btn-default">Submit</button>
-              <button type="button" class="btn btn-default"
+              <button type="button" class="btn btn-default sign-in-cancel"
                       data-dismiss="modal">Cancel</button>
               <div id="sign-in-error">
               </div>
@@ -186,6 +186,32 @@
       </div>
     </div>
 
+    <div class="modal fade" id="error-on-edit" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"
+                    aria-label="Close"><span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">Ypu may not edit or delete books that are held by other users or are pending approval</h4>
+          </div>
+          <div class="modal-body">
+            <form class="edit-item-form">
+              <button type="button" class="btn btn-default"
+                      data-dismiss="modal">OK</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="landing-page">
+    </div>
+
+    <div class="desc">
+    </div>
+
     <!-- <div id="inbox" class="inbox-div"> -->
     <!-- <h2>welcome to your inbox!</h2> -->
     <div class="inbox">
@@ -221,18 +247,18 @@
         <form class="add-books-form">
           <div class="form-group">
             <label>Name</label>
-            <input type="text" name="item[name]" placeholder="Name">
+            <input type="text" name="item[name]" placeholder="Name" class="bookname">
           </div>
 
           <div class="form-group">
             <label>Decription</label>
             <input type="text" name="item[description]"
-                   placeholder="Description">
+                   placeholder="Description" class="bookdesc">
             <input type="hidden" name="item[user_id]" id="user-id-form">
             <input type="hidden" name="item[status]" id="user-item-status">
           </div>
           <button type="submit" class="btn btn-default">Add</button>
-          <button type="button" class="btn btn-default"
+          <button type="button" class="btn btn-default" id="add-book-cancel"
                   data-dismiss="modal">Cancel</button>
         </form>
       </div>
@@ -253,11 +279,14 @@
         </form>
       </div>
 
+      <!-- <div class="error-on-edit">
+      </div> -->
+
       <div class="search-div">
         <form class="search-form">
           <div class="form-group">
             <input type="text" name="item[name]"
-             placeholder="Book Name">
+             placeholder="Book Name" class="search-book-name">
              <input type="hidden" name="item[user_id]" id="search-user-id-form">
           </div>
           <button type="submit" class="btn btn-default">Search</button>
@@ -304,15 +333,15 @@
               </div>
               <div class="form-group">
                 <label>Mailing address</label>
-                <input type="text" name="request[mailing_address]">
+                <input type="text" name="request[mailing_address]" class="request-address">
               </div>
               <div class="form-group">
                 <label>Return Date</label>
-                <input type="text" id="d-picker" name="request[return_date]">
+                <input type="text" id="d-picker" name="request[return_date]" class="request-date">
               </div>
 
               <button type="submit" class="btn btn-default">Request</button>
-              <button type="button" class="btn btn-default"
+              <button type="button" class="btn btn-default" class="request-cancel"
                       data-dismiss="modal">Cancel</button>
             </form>
           </div>
@@ -353,5 +382,26 @@
         </div>
       </div>
     </div>
+
+    <div class="modal fade" id="add-item-error-modal" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"
+                    aria-label="Close"><span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">Please add both title and description</h4>
+          </div>
+          <div class="modal-body">
+            <form class="edit-item-form">
+              <button type="button" class="btn btn-default"
+                      data-dismiss="modal">OK</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>

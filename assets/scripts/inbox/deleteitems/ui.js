@@ -45,7 +45,7 @@ const onViewItemsSuccess = function (data) {
   addHandlers();
 };
 
-const onDeleteItemsSuccess = function (data) {
+const onDeleteItemsSuccess = function (/*data*/) {
 
   // debugger;
   // console.log(data);
@@ -55,14 +55,13 @@ const onDeleteItemsSuccess = function (data) {
 };
 
 const onDeleteItems = function (event) {
-
-  // debugger;
   event.preventDefault();
 
   // let data = $(event.target).data('id');
   let data = this.id;
   let status = document.getElementById('status'+data).value;
   if(status !== 'Available') {
+    $('#error-on-edit').modal('show');
     return;
   }
   api.deleteItems(data)
@@ -70,7 +69,7 @@ const onDeleteItems = function (event) {
     .catch(failure);
 };
 
-const onUpdateItemsSuccess = function (data) {
+const onUpdateItemsSuccess = function (/*data*/) {
   // console.log(data);
   api.viewItems()
   .then(onViewItemsSuccess)
@@ -92,14 +91,12 @@ const onUpdateItems = function (event) {
 
 const onEditClick = function (event) {
   event.preventDefault();
-
-  // debugger;
-
   let id = this.id;
   let len = this.id.length;
   let editId = id.substring(4, len);
   let status = document.getElementById('status'+editId).value;
   if(status !== 'Available') {
+    $('#error-on-edit').modal('show');
     return;
   }
   $('#edit-item-modal').modal('show');

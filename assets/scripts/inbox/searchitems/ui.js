@@ -19,12 +19,16 @@ const failure = function() {
 const onRequestClick = function(event) {
   event.preventDefault();
   // debugger;
-  $('#request-item-modal').modal('show');
+  // $('#request-item-modal').modal('show');
   let id = this.id;
+  let status = document.getElementById('status'+id).value;
+  if(status !== 'Available') {
+    return;
+  }
+  $('.request-address').val('');
+  $('.request-date').val('');
+  $('#request-item-modal').modal('show');
   $('#request-item-modal #requested-user_item_id').val(id);
-// $('.d-picker').datepicker({
-//     format: 'yyyy-mm-dd'
-//   });
 };
 
 const addHandlers = function() {
@@ -61,7 +65,7 @@ const onSearchItemSuccess = function(data) {
         if (data.user_items[i].name) {
 
           // txt += "<tr><td>"+data.user_items[i].name+"</td><td>"+data.user_items[i].description+"</td><td>"+data.user_items[i].user_name+"</td><td><a href='#' class='request-item' id="+data.user_items[i].id+">Request</a></td></tr>";
-          txt += "<tr class='tabr'><td class='tabd'>" + data.user_items[i].name + "</td><td class='tabd'>" + data.user_items[i].description + "</td><td class='tabd'>" + data.user_items[i].user_name + "</td><td class='tabd'>" + data.user_items[i].status + "</td><td class='tabd'><a href='#' class='request-items' id=" + data.user_items[i].id + ">Select</a></td></tr>";
+          txt += "<tr class='tabr'><td class='tabd'>" + data.user_items[i].name + "</td><td class='tabd'>" + data.user_items[i].description + "</td><td class='tabd'>" + data.user_items[i].user_name + "</td><td class='tabd'>"+data.user_items[i].status + "<input type='hidden' id=status" +data.user_items[i].id+" value=" +data.user_items[i].status+"></td><td class='tabd'><a href='#' class='request-items' id=" + data.user_items[i].id + ">Select</a></td></tr>";
 
           // $('#request-id').val(data.user_items[i].id);
           // $('#requested-user-id2').val(data.user_items[i].user_name);
