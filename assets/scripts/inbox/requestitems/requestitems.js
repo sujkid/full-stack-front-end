@@ -17,8 +17,13 @@ const onRequestItem = function (event) {
       .catch(ui.failure);
 };
 
+const onRequestCancel = function () {
+
+};
+
 const addHandlers = function () {
   $('.request-item-form').on('submit', onRequestItem);
+  $('.request-cancel').on('click', onRequestCancel);
 };
 
 module.exports = {

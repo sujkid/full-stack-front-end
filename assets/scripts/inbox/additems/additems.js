@@ -13,21 +13,27 @@ const onAddItemLink = function () {
 };
 
 const onAddItem = function (event) {
+  event.preventDefault();
   $('#user-item-status').val('Available');
   let data = getFormFields(this);
-  if (!data.item.name) {
+  if (!data.item.name || !data.item.description) {
+    $('#add-item-error-modal').modal('show');
     return;
   }
-
-  event.preventDefault();
   api.addItem(data)
     .then(ui.onAddItemSuccess)
     .catch(ui.failure);
 };
 
+const onAddBookCancel = function() {
+  $('.bookname').val('');
+  $('.bookdesc').val('');
+};
+
 const addHandlers = () => {
   $('.addb').on('click', onAddItemLink);
   $('.add-books-form').on('submit', onAddItem);
+  $('#add-book-cancel').on('click', onAddBookCancel);
 };
 
 module.exports = {

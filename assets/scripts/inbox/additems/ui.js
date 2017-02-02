@@ -2,9 +2,9 @@
 
 // const store = require('../../store');
 
-const onAddItemSuccess = (data) => {
-
-  // console.log(data);
+const onAddItemSuccess = (/*data*/) => {
+  $('.bookname').val('');
+  $('.bookdesc').val('');
 };
 
 const failure = (/*error*/) => {
